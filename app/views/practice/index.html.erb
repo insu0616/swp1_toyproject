@@ -1,0 +1,99 @@
+<h1> My English Note! </h1>
+
+<%=form_tag '/write', method: 'post' do %>
+    <textarea name="naeyong" placeholder="영어문장을 입력하세요"></textarea>
+   
+        <br>
+    <textarea name="uime" placeholder="의미를 입력하세요"></textarea>
+    <input type="submit">
+        <br>
+        <% end %>
+        
+        
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Audio-only Example - Record Plugin for Video.js</title>
+
+  <link href="//vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+  <link href="../src/css/videojs.record.css" rel="stylesheet">
+
+  <script src="//vjs.zencdn.net/5.0.2/video.js"></script>
+  <script src="//cdn.webrtc-experiment.com/RecordRTC.js"></script>
+  <script src="//katspaugh.github.io/wavesurfer.js/dist/wavesurfer.min.js"></script>
+  <script src="//katspaugh.github.io/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
+  <script src="//collab-project.github.io/videojs-wavesurfer/dist/videojs.wavesurfer.min.js"></script>
+
+  <script src="../src/js/videojs.record.js"></script>
+
+  <style>
+  /* place fullscreen control on right side of the player */
+  .video-js .vjs-control.vjs-fullscreen-control {
+    position: absolute;
+    right: 0;
+  }
+  /* change player background color */
+  #myAudio {
+      background-color: #9FD6BA;
+  }
+  </style>
+
+</head>
+<body>
+
+<audio id="myAudio" class="video-js vjs-default-skin"></audio>
+
+<script>
+var player = videojs("myAudio",
+{
+    controls: true,
+    width: 600,
+    height: 300,
+    plugins: {
+        wavesurfer: {
+            src: "live",
+            waveColor: "black",
+            progressColor: "#2E732D",
+            cursorWidth: 1,
+            msDisplayMax: 20,
+            hideScrollbar: true
+        },
+        record: {
+            audio: true,
+            video: false,
+            maxLength: 20
+        }
+    }
+});
+// error handling
+player.on('deviceError', function()
+{
+    console.log('device error:', player.deviceErrorCode);
+});
+// user clicked the record button and started recording
+player.on('startRecord', function()
+{
+    console.log('started recording!');
+});
+// user completed recording and stream is available
+player.on('finishRecord', function()
+{
+    // the blob object contains the recorded data that
+    // can be downloaded by the user, stored on server etc.
+    console.log('finished recording: ', player.recordedData);
+});
+</script>
+</body>
+</html>
+        
+        
+<ol>
+    <% @note.each do |b| %>
+        <li> 문장 : <%= b.sentence %> <br>
+             의미 : <%= b.meaning %>  
+             <a href="/edit?id=<%=b.id%>">수정</a>
+             <a href="/destroy?id=<%=b.id%>">삭제</a>
+        </li>
+    <% end %>
+</ol>

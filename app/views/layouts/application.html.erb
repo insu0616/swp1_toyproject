@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link href="//vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/5.0.2/video.js"></script>
+  <link href="videojs.record.css" rel="stylesheet">
+  <script src="//cdn.webrtc-experiment.com/RecordRTC.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<ul>
+  <% if user_signed_in? %>
+  
+  <li><a href="/users/sign_out" data-method="delete">로그아웃</a></li>
+  <% else %>
+    <li><a href="/users/sign_in">로그인</a></li>
+  <li><a href="/users/sign_up">회원가입</a></li>
+  <% end %>
+</ul>
+
+<%= yield %>
+
+</body>
+</html>

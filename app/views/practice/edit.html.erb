@@ -1,0 +1,13 @@
+<h1>EDIT</h1>
+
+<%=form_tag '/update', method: 'post' do %>
+    <input type="hidden" name="id" value="<%= @note.id %>">
+
+    <textarea name="naeyong" placeholder="영어문장을 입력하세요"><%=@note.sentence%></textarea>
+   
+        <br>
+    <textarea name="uime" placeholder="의미를 입력하세요"><%=@note.meaning%></textarea>
+    <input type="submit">
+        <br>
+        
+<% end %>
