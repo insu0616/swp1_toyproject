@@ -1,7 +1,7 @@
 class PracticeController < ApplicationController
    before_action :authenticate_user!
     def index
-        @note = Note.all
+        @note = Note.all.reverse
     
     end
     

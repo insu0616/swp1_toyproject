@@ -1,20 +1,39 @@
 <h1> My English Note! </h1>
 
 <%=form_tag '/write', method: 'post' do %>
-    <textarea name="naeyong" placeholder="영어문장을 입력하세요"></textarea>
+    <div class="form-group">
+      <textarea name="naeyong" placeholder="영어문장을 입력하세요" class="form-control" rows="2"></textarea>
+    </div>
+    
+        <br>
+    <div class="form-group">
+        <textarea name="uime" placeholder="의미를 입력하세요" class="form-control" rows="2"></textarea> <br>
+         <input type="submit" class="btn btn-success">
+    </div>
    
-        <br>
-    <textarea name="uime" placeholder="의미를 입력하세요"></textarea>
-    <input type="submit">
-        <br>
-        <% end %>
+<% end %>
         
         
+<ol>
+    <% @note.each do |b| %>
+        <li> 문장 : <%= b.sentence %> <br>
+             의미 : <%= b.meaning %>  <br>
+             <a class="btn btn-info btn-xs" href="/edit?id=<%=b.id%>" role="button">수정</a>
+             <a class="btn btn-info btn-xs" href="/destroy?id=<%=b.id%>" role="button">삭제</a>
+        </li>
+    <% end %>
+</ol>
+
+
+       
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Audio-only Example - Record Plugin for Video.js</title>
+ 
+      <audio id="myAudio" class="video-js vjs-default-skin"></audio>
+  
 
   <link href="//vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
   <link href="../src/css/videojs.record.css" rel="stylesheet">
@@ -26,6 +45,7 @@
   <script src="//collab-project.github.io/videojs-wavesurfer/dist/videojs.wavesurfer.min.js"></script>
 
   <script src="../src/js/videojs.record.js"></script>
+ 
 
   <style>
   /* place fullscreen control on right side of the player */
@@ -87,13 +107,3 @@ player.on('finishRecord', function()
 </body>
 </html>
         
-        
-<ol>
-    <% @note.each do |b| %>
-        <li> 문장 : <%= b.sentence %> <br>
-             의미 : <%= b.meaning %>  
-             <a href="/edit?id=<%=b.id%>">수정</a>
-             <a href="/destroy?id=<%=b.id%>">삭제</a>
-        </li>
-    <% end %>
-</ol>

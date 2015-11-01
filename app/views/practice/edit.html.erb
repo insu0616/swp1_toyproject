@@ -2,12 +2,17 @@
 
 <%=form_tag '/update', method: 'post' do %>
     <input type="hidden" name="id" value="<%= @note.id %>">
-
-    <textarea name="naeyong" placeholder="영어문장을 입력하세요"><%=@note.sentence%></textarea>
+    <div class="form-group">
+        <textarea name="naeyong" placeholder="영어문장을 입력하세요" class="form-control" rows="2"><%=@note.sentence%></textarea>
+    </div>
+    <div class="form-group">
+        <textarea name="uime" placeholder="의미를 입력하세요" class="form-control" rows="2"><%=@note.meaning%></textarea>
+    </div>
+    <div class="form-group">
+         <input type="submit" class="btn btn-success">
+    </div>
    
         <br>
-    <textarea name="uime" placeholder="의미를 입력하세요"><%=@note.meaning%></textarea>
-    <input type="submit">
-        <br>
-        
+         
 <% end %>
+
