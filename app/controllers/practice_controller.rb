@@ -1,12 +1,12 @@
 class PracticeController < ApplicationController
    before_action :authenticate_user!
     def index
-        @note = Note.all.reverse
+        @note = current_user.notes.reverse
     
     end
     
     def write
-        Note.create(sentence: params[:naeyong], meaning: params[:uime])
+        Note.create(sentence: params[:naeyong], meaning: params[:uime], user_id: current_user.id)
         redirect_to :root
     end
     
@@ -28,6 +28,7 @@ class PracticeController < ApplicationController
         nn.save
         redirect_to :root
     end
+
     
     
 end

@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151031154152) do
 
   create_table "notes", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "sentence"
     t.string   "meaning"
     t.datetime "created_at", null: false
