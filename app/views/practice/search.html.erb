@@ -1,0 +1,9 @@
+<div class="container">
+    <% @search.each do |s| %>
+      <div>
+        <h2><%= s.sentence %></h2>
+        <br>
+        <p><%= s.meaning %></p>
+      </div>
+    <% end %>
+</div>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'practice#index'
-  post  '/write' => 'practice#write'
+  get '/search' => 'practice#search'
+  post '/write' => 'practice#write'
   get '/destroy' => 'practice#destroy'
   get '/edit' => 'practice#edit'
   post '/update' => 'practice#update'

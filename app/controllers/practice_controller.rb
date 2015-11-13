@@ -5,6 +5,14 @@ class PracticeController < ApplicationController
     
     end
     
+    def search
+        if params[:search]
+          @search = Note.search(params[:search]).order("created_at DESC")
+        else
+          @search = Note.order("created_at DESC")
+        end
+    end
+    
     def write
         Note.create(sentence: params[:naeyong], meaning: params[:uime], user_id: current_user.id)
         redirect_to :root
