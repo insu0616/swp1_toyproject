@@ -1,33 +1,48 @@
-<center>
-<img src="http://www.dogdrip.net/files/attach/dvs/15/08/14/18564339/462/107/079/5d5d7cb813609b4ddadc576f2b411668.gif" class="img-responsive" alt="Responsive image">
-
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-</center>
+    
+    
+<body>
+        <div id="lion_box_sign">
+            <div id="header" style="">
+                  <div class="transparent_headaer_left">
+                      <a href="/" class="header_codelion"></a>
+                      <img alt="Beta" id="beta" src="#">
+                  </div>
+            
+                  <div class="transparent_header_right">
+                  </div>
+            </div>
+            <center>
+                  <div class="sign_box">
+                    <h2 class="sign_box_subject">회원가입</h2> <br>
+                          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                          <%= devise_error_messages! %>
+                        
+                          <div class="field">
+                            <%= f.email_field :email, autofocus: true, :placeholder =>"이메일" %>
+                          </div>
+                        
+                          <div class="field">
+                            <% if @minimum_password_length %>
+                         <% end %>
+                            <%= f.password_field :password, autocomplete: "off", :placeholder =>"비밀번호, 8자 이상" %>
+                          </div>
+                        
+                          <div class="field">
+                            <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder =>"비밀번호 확인"%>
+                          </div> <br>
+                        
+                          <div class="actions">
+                            <%= f.submit "회원가입" %>
+                          </div> <br>
+                       
+                          <div style="margin-top:0px;">
+                               <p>이미 마이노트의 회원이라구요?  
+                                   <a class="sign_text" href="/users/sign_in">로그인</a>
+                               </p>
+                               <br>
+                          </div>
+                        <%end%>   
+                  </div>
+              </center>
+          </div>
+</body>

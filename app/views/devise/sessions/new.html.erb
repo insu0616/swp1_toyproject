@@ -1,30 +1,45 @@
 
-<center>
-<img src="http://www.dogdrip.net/files/attach/dvs/15/08/14/18564339/462/107/079/131bc93e210f8690df49674bee7e635f.gif" class="img-responsive" alt="Responsive image">
-<h2>Log in</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<body>
+    <div id="lion_box_sign">
+          <div id="header" style="">
+                <div class="transparent_headaer_left">
+                  <a href="/" class="header_codelion"></a>
+                  <img alt="Beta" id="beta" src="/assets/beta-66d69f089bea48d56e84cba24038f495.png">
+                </div>
+        
+                <div class="transparent_header_right">
+                </div>
+          </div>
+        <center>
+          <div class="sign_box">
+            <h2 class="sign_box_subject">로그인</h2>
+               
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                      <div class="field">
+                            <%= f.email_field :email, autofocus: true, :placeholder => "이메일" %>
+                      </div>
+                
+                      <div class="field">
+                            <%= f.password_field :password, autocomplete: "off", :placeholder => "비밀번호"  %>
+                      </div>
+                  <br>
+                  <% if devise_mapping.rememberable? -%>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                  <% end %> <br>
+                  <div class="actions">
+                    <%= f.submit "로그인" %>
+                  </div>
+                <% end %> <br>
+                 <p style="font-size: 20px;">마이노트 아이디가 없으세요? <a class="sign_text" href="/users/sign_up">회원가입</a>
+                   <br>
+                 </p>
+          </div>
+          
+        </center>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</center>
+</body>
+    
+    
